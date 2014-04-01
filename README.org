@@ -4,9 +4,21 @@
 [[http://zipcodedistanceapi.redline13.com/Register][get an "application key"]] first.  Or you could [[http://zipcodedistanceapi.redline13.com/RealTime][watch]] other people's
 queries.
 
-* Examples
-
+Once you have your key store it as so:
 #+begin_src
+  (setf (get :zipcodedistanceapi.redline13.com :token)
+     "eqnvqIjAK---you-actual-key-here---B33LUUpt0u")
+#+end_src
+
+* Examples
+Assuming zipcode-distance-api is in your ASDF search path and
+your using quicklisp, then ...
+#+begin_src
+cl-user> (ql:quickload "zipcode-distance-api")
+cl-user> (defpackage #:p (:use #:common-lisp #:zipcode-distance-api))
+...
+cl-user> (in-package #:p)
+...
 p> (zipcode-ok-p "02476")
 t
 p> (zipcode-ok-p 2476)
