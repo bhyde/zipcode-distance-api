@@ -1,0 +1,29 @@
+* Intro
+
+[[http://www.redline13.com/][Redline13]] offers a [[http://zipcodedistanceapi.redline13.com/][simple zipcode API]].  Which, to use you'll need to
+[[http://zipcodedistanceapi.redline13.com/Register][get an "application key"]] first.  Or you could [[http://zipcodedistanceapi.redline13.com/RealTime][watch]] other people's
+queries.
+
+* Examples
+
+#+begin_src
+p> (zipcode-ok-p "02476")
+t
+p> (zipcode-ok-p 2476)
+nil
+p> (zipcode-ok-p "02476-000")
+nil
+p> (zipcodes-for-city "fall river" "ma")
+("02720" "02721" "02722" "02723" "02724")
+p> (pprint (zipcode-info "02476"))
+((:zip--code . "02476") (:lat . 42.409992) (:lng . -71.160212)
+ (:city . "Arlington") (:state . "MA")
+ (:timezone (:timezone--identifier . "America/New_York")
+  (:timezone--abbr . "EDT") (:utc--offset--sec . -14400) (:is--dst . "T")))
+p> (nearby-zipcodes "02476" 1 :mile)
+((:zip--codes ((:zip--code . "02474") (:distance . 0.011)) ((:zip--code . "02476") (:distance . 0.011))))
+p> (distance-between "02478" "90210")
+2591.843
+p> (distance-between "02478" "90210" :mile)
+2591.843
+#+end_src
